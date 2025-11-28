@@ -1,0 +1,197 @@
+/* --- 1. Global Styles and Background (NEW WHITE THEME) --- */
+:root {
+    --color-light: #ffffff;
+    /* Primary Background */
+    --color-dark-text: #333333;
+    /* Primary Text */
+    --color-border-light: #ddd;
+    /* Light Border */
+    --color-accent: #e53935;
+    /* Primary Fire/Error Red */
+    --color-secondary: #ff7043;
+    /* Secondary Fire Orange */
+    --color-card: #f9f9f9;
+    /* Card Background */
+    --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    /* Soft light background */
+    color: var(--color-dark-text);
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    min-height: 100vh;
+
+    /* Ensure no dark background image is used */
+    background-image: none;
+    background-attachment: fixed;
+    background-position: center;
+    position: relative;
+}
+
+/* Remove dark overlay */
+body::before {
+    content: none;
+}
+
+.main-content {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- 2. Header and Text --- */
+h1 {
+    font-size: 3.5em;
+    font-weight: 900;
+    /* Fiery Gradient Text */
+    background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+    margin: 50px 0 30px 0;
+}
+
+h4 {
+    color: var(--color-secondary);
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    font-weight: 700;
+}
+
+.fire-info {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin: 20px 0 40px 0;
+    color: var(--color-accent);
+}
+
+/* --- 3. Upload Form --- */
+form {
+    margin: 0 auto 40px auto;
+    padding: 30px;
+    background: var(--color-light);
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid var(--color-border-light);
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    background-color: #eee;
+    color: var(--color-dark-text);
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    border: 1px solid #ccc;
+}
+
+.custom-file-upload:hover {
+    background-color: #ddd;
+    color: var(--color-accent);
+}
+
+.predict-button {
+    background: var(--color-accent);
+    color: var(--color-light);
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(229, 57, 53, 0.4);
+}
+
+.predict-button:hover {
+    background: var(--color-secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(255, 112, 67, 0.5);
+}
+
+/* --- 4. Results Section (Images) --- */
+.results-section {
+    background: var(--color-light);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--color-border-light);
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.result-card {
+    background: var(--color-card);
+    border-radius: 10px;
+    padding: 15px;
+    flex: 1 1 300px;
+    max-width: 350px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--color-border-light);
+}
+
+.result-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.result-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    object-fit: cover;
+}
+
+/* --- 5. Responsive Adjustments --- */
+@media (max-width: 992px) {
+    .image-container {
+        gap: 20px;
+    }
+
+    .result-card {
+        flex: 1 1 45%;
+        max-width: 45%;
+    }
+
+    h1 {
+        font-size: 3em;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5em;
+    }
+
+    .result-card {
+        flex: 1 1 90%;
+        max-width: 90%;
+    }
+
+    form {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
