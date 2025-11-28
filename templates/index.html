@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forest Fire Prediction Web App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="main-content">
+        <h1>🌲 Forest Fire Prediction 🔥</h1>
+
+        <form method="POST" enctype="multipart/form-data">
+            <label for="file-upload" class="custom-file-upload">
+                Choose 5-band GeoTIFF file
+            </label>
+            <input id="file-upload" type="file" name="file" accept=".tif,.tiff" required>
+            <input type="submit" value="Upload & Predict" class="predict-button">
+        </form>
+
+        {% if rgb_image %}
+        <div class="results-section">
+            <div class="fire-info">
+                **Predicted Fire Extent:** {{ fire_fraction }}
+            </div>
+
+            <div class="image-container">
+                <div class="result-card">
+                    <h4>True Color (RGB)</h4>
+                    <img src="{{ rgb_image }}" alt="True Color Image">
+                </div>
+
+                <div class="result-card">
+                    <h4>MBR</h4>
+                    <img src="{{ mbr_image }}" alt="MBR Visualization">
+                </div>
+
+                <div class="result-card">
+                    <h4>Prediction overlay <small>(hot = fire prob)</small></h4>
+                    <img src="{{ overlay_image }}" alt="Fire Probability Overlay">
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <script>
+        document.getElementById('file-upload').onchange = function () {
+            const fileName = this.files[0] ? this.files[0].name : 'Choose 5-band GeoTIFF file';
+            document.querySelector('.custom-file-upload').textContent = fileName;
+        };
+    </script>
+</body>
+
+</html>
