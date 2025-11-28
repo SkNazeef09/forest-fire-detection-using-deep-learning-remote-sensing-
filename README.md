@@ -1,8 +1,12 @@
 # forest-fire-detection-using-deep-learning-remote-sensing-
-first run 
+1. Setup Dependencies
+Bash
+
 pip install -r requirements.txt
+2. Add Model Weights
+Place fire_raunet_best.pth file inside the backend folder.
 
-add fire_raunet_best.pth file to backend folder 
+3. Run Application
+Bash
 
-and run command 
 python backend/app.py
