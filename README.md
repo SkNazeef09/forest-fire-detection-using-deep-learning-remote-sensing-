@@ -1,0 +1,1 @@
+# forest-fire-detection-using-deep-learning-remote-sensing-
